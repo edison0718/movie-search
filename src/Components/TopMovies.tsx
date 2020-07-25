@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Grid } from "@material-ui/core";
+import MovieCard from "./MovieCard";
 
 interface IState {
   id: number;
@@ -13,7 +15,12 @@ function TopMovies() {
 
   function TopFive(results: any[]) {
     results = results.slice(0, 5);
-    console.log(results);
+    // console.log(results);
+    let new_results = results.map((r) => {
+      return { id: r.id, title: r.title, imageURL: r.poster_path };
+    });
+    // console.log(new_results);
+    setItemArray(new_results);
   }
 
   useEffect(() => {
@@ -29,11 +36,32 @@ function TopMovies() {
       .catch(() => console.log("it didn't work"));
   });
 
+  var Cards: JSX.Element[] = [];
+  ItemArray.forEach((el: IState, i: Number) => {
+    if (!el) {
+      return;
+    }
+    Cards.push(
+      <Grid
+        key={"card_" + i}
+        item
+        sm={2}
+        md={2}
+        lg={2}
+        className="MediaGridCard"
+      >
+        <MovieCard id={el.id} title={el.title} imageURL={el.imageURL} />
+      </Grid>
+    );
+  });
+
   return (
     <div className="App">
-      <h3> Top 5 Movies</h3>
+      <h3> Top Rated 5 Movies</h3>
+      <Grid container justify="center">
+        {Cards}
+      </Grid>
     </div>
   );
 }
-
 export default TopMovies;
