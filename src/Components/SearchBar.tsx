@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { TextField, Button } from "@material-ui/core";
 import "./SearchBar.css";
+import { IUserinput } from "./interface";
 
 interface ISearchBarProps {
-  SetUserInput: (a: string) => void;
+  SetUserInput: (a: IUserinput) => void;
 }
 
 function SearchBar(props: ISearchBarProps) {
@@ -18,7 +19,10 @@ function SearchBar(props: ISearchBarProps) {
       SearchQuery !== null &&
       SearchQuery !== ""
     ) {
-      props.SetUserInput(SearchQuery);
+      let UserInput: IUserinput = {
+        search: SearchQuery,
+      };
+      props.SetUserInput(UserInput);
     }
   };
 
