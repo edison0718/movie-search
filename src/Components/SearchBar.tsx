@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { TextField, Button, Grid } from "@material-ui/core";
-import "./SearchBar.css";
 
 interface ISearchBarProps {
   SetUserInput: (a: string | null) => void;
