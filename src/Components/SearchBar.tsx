@@ -27,7 +27,7 @@ function SearchBar(props: ISearchBarProps) {
         <TextField
           required
           id="outlined-required"
-          label="Search"
+          label="Search movie name.."
           variant="outlined"
           value={SearchQuery}
           onChange={(e) => handleSearchQueryChange(e.target.value)}
