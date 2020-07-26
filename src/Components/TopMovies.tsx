@@ -59,7 +59,12 @@ function TopMovies() {
   return (
     <div className="App">
       <h3> Top Rated 5 Movies</h3>
-      <Grid container justify="center" className="MediaGridContainer">
+      <Grid
+        container
+        justify="center"
+        spacing={2}
+        className="MediaGridContainer"
+      >
         {Cards}
       </Grid>
     </div>

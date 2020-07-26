@@ -9,7 +9,7 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles({
   root: {
     width: 500 / 3,
-    maxHeight: 750 / 3 + 100,
+    MaxHeight: 750 / 3 + 150,
   },
   media: {
     height: 750 / 3,
