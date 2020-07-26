@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import MovieCard from "./MovieCard";
+import "./TopMovies.css";
 
 interface IState {
   id: number;
@@ -58,7 +59,7 @@ function TopMovies() {
   return (
     <div className="App">
       <h3> Top Rated 5 Movies</h3>
-      <Grid container justify="center">
+      <Grid container justify="center" className="MediaGridContainer">
         {Cards}
       </Grid>
     </div>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import MovieCard from "./MovieCard";
+import "./TopMovies.css";
 
 interface IState {
   id: number;
@@ -62,8 +63,13 @@ function ResultMovies(props: IUserinput) {
   } else {
     return (
       <div className="App">
-        <h3> Search Results: {props.search}</h3>
-        <Grid container justify="center" spacing={3}>
+        <h3> Search Results: "{props.search}"</h3>
+        <Grid
+          container
+          justify="center"
+          spacing={2}
+          className="MediaGridContainer"
+        >
           {Cards}
         </Grid>
       </div>

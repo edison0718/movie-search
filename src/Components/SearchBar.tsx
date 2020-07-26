@@ -24,7 +24,7 @@ function SearchBar(props: ISearchBarProps) {
 
   return (
     <div className="SearchBarContainer">
-      <Grid container justify="center" spacing={3}>
+      <Grid container justify="center" spacing={1}>
         <TextField
           required
           id="outlined-required"
@@ -34,7 +34,7 @@ function SearchBar(props: ISearchBarProps) {
           onChange={(e) => handleSearchQueryChange(e.target.value)}
         />
         <Button variant="contained" color="primary" onClick={handleSubmit}>
-          Submit
+          Search
         </Button>
       </Grid>
     </div>

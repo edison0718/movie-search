@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Movie Search APP</h1>
+      <h1> "" Movie Search APP ""</h1>
       <SearchBar SetUserInput={(a: string | null) => setUserInput(a)} />
       <TopMovies />
       <ResultMovies search={userInput} />
