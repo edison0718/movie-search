@@ -31,24 +31,28 @@ interface MovieCardProps {
 export default function MovieCard(props: MovieCardProps) {
   const classes = useStyles();
 
-  return (
-    <Card className={classes.root}>
-      <CardMedia
-        className={classes.media}
-        image={"https://image.tmdb.org/t/p/w500" + props.imageURL}
-      />
-      <CardContent className={classes.content}>{props.title}</CardContent>
-      <CardActions className={classes.action}>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() =>
-            window.open("https://www.themoviedb.org/movie/" + props.id)
-          }
-        >
-          More Detail
-        </Button>
-      </CardActions>
-    </Card>
-  );
+  if (props.imageURL !== "") {
+    return (
+      <Card className={classes.root}>
+        <CardMedia
+          className={classes.media}
+          image={"https://image.tmdb.org/t/p/w500" + props.imageURL}
+        />
+        <CardContent className={classes.content}>{props.title}</CardContent>
+        <CardActions className={classes.action}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={() =>
+              window.open("https://www.themoviedb.org/movie/" + props.id)
+            }
+          >
+            More Detail
+          </Button>
+        </CardActions>
+      </Card>
+    );
+  } else {
+    return <></>;
+  }
 }

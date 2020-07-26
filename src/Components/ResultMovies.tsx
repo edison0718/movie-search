@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import MovieCard from "./MovieCard";
-import { IUserinput } from "./interface";
 
 interface IState {
   id: number;
@@ -9,10 +8,12 @@ interface IState {
   imageURL: string;
 }
 
+interface IUserinput {
+  search: String | null;
+}
+
 function ResultMovies(props: IUserinput) {
-  const [ItemArray, setItemArray] = useState<IState[]>([
-    { id: 0, title: "", imageURL: "" },
-  ]);
+  const [ItemArray, setItemArray] = useState<IState[]>([]);
 
   function Results(results: any[]) {
     let new_results = results.map((r) => {
@@ -22,17 +23,19 @@ function ResultMovies(props: IUserinput) {
   }
 
   useEffect(() => {
-    fetch(
-      "https://api.themoviedb.org/3/search/movie?api_key=" +
-        process.env.REACT_APP_API_KEY +
-        "&language=en-US&query=" +
-        props.search
-    )
-      .then((response) => response.json())
-      .then((response) => {
-        Results(response.results);
-      })
-      .catch(() => console.log("it didn't work"));
+    if (props.search !== "") {
+      fetch(
+        "https://api.themoviedb.org/3/search/movie?api_key=" +
+          process.env.REACT_APP_API_KEY +
+          "&language=en-US&query=" +
+          props.search
+      )
+        .then((response) => response.json())
+        .then((response) => {
+          Results(response.results);
+        })
+        .catch(() => console.log("it didn't work"));
+    }
   });
 
   var Cards: JSX.Element[] = [];
@@ -54,14 +57,18 @@ function ResultMovies(props: IUserinput) {
     );
   });
 
-  return (
-    <div className="App">
-      <h3> Search Results: {props.search}</h3>
-      <Grid container justify="center" spacing={3}>
-        {Cards}
-      </Grid>
-    </div>
-  );
+  if (ItemArray.length === 0) {
+    return <></>;
+  } else {
+    return (
+      <div className="App">
+        <h3> Search Results: {props.search}</h3>
+        <Grid container justify="center" spacing={3}>
+          {Cards}
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default ResultMovies;
