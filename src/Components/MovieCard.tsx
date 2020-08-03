@@ -34,7 +34,11 @@ export default function MovieCard(props: MovieCardProps) {
       <Card className={classes.root}>
         <CardMedia
           className={classes.media}
-          image={"https://image.tmdb.org/t/p/w500" + props.imageURL}
+          image={
+            props.imageURL
+              ? "https://image.tmdb.org/t/p/w500" + props.imageURL
+              : "emptyPoster.png"
+          }
         />
         <CardContent className={classes.content}>{props.title}</CardContent>
         <CardActions>

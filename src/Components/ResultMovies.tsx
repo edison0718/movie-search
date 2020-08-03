@@ -36,8 +36,9 @@ function ResultMovies(props: IUserinput) {
           Results(response.results);
         })
         .catch(() => console.log("it didn't work"));
+      // console.log("hi");
     }
-  });
+  }, [props.search]);
 
   var Cards: JSX.Element[] = [];
   ItemArray.forEach((el: IState, i: Number) => {

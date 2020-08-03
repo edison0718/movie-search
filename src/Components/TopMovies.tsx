@@ -16,11 +16,9 @@ function TopMovies() {
 
   function TopFive(results: any[]) {
     results = results.slice(0, 5);
-    // console.log(results);
     let new_results = results.map((r) => {
       return { id: r.id, title: r.title, imageURL: r.poster_path };
     });
-    // console.log(new_results);
     setItemArray(new_results);
   }
 
@@ -35,7 +33,8 @@ function TopMovies() {
         TopFive(response.results);
       })
       .catch(() => console.log("it didn't work"));
-  });
+    // console.log("hi");
+  }, []);
 
   var Cards: JSX.Element[] = [];
   ItemArray.forEach((el: IState, i: Number) => {
